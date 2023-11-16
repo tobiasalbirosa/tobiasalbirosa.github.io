@@ -12,47 +12,54 @@ class App {
 
       this.botonInicio = new Boton(width/4, height/2, width/10, height/20, "Iniciar")
       this.botonCreditos = new Boton(width/2, height/2, width/10, height/20, "Créditos")
+      this.irainicio = new Boton(width/2-width/4, height/2, width/10, height/20, "Inicio")
+
       this.siguiente = new Boton(width/2, height/2, width/10, height/20, "Siguiente")
       this.volver = new Boton(width/2-width/4, height/2, width/10, height/20, "Volver")
-      this.irainicio = new Boton(width/2-width/4, height/2, width/10, height/20, "Inicio")
 
       for (let i = 0; i < this.cantidadDePantallas; i++) {
 
       this.instanciaPantalla[i] = new Pantalla(i)
     }
   }
-
-  dibujar() {
-
-
+  actualizar() {
     this.tiempoParaCambiar++
+
       if ( this.tiempoParaCambiar > 60) {
       this.cambiable = true
     }
+  }
+  dibujar() {
+
+
+
     if (this.pantalla == 0) {
 
-      this.instanciaPantalla[this.pantalla].dibujar()
+        this.instanciaPantalla[this.pantalla].dibujar()
         this.botonInicio.dibujar()
         this.botonCreditos.dibujar()
+        
     } else if (this.pantalla == 1) {
 
-      this.instanciaPantalla[this.pantalla].dibujar()
+        this.instanciaPantalla[this.pantalla].dibujar()
         this.volver.dibujar()
+    
     } else if (this.pantalla == 2) {
 
-      this.instanciaPantalla[this.pantalla].dibujar()
+        this.instanciaPantalla[this.pantalla].dibujar()
         this.irainicio.dibujar()
         this.siguiente.dibujar()
+    
     } else if (this.pantalla == 3) {
 
-      this.instanciaPantalla[this.pantalla].dibujar()
+        this.instanciaPantalla[this.pantalla].dibujar()
         this.volver.dibujar()
         this.siguiente.dibujar()
     } else if (this.pantalla == 4) {
 
       this.instanciaPantalla[this.pantalla].dibujar()
-        this.volver.dibujar()
-        this.siguiente.dibujar()
+      this.volver.dibujar()
+      this.siguiente.dibujar()
     }
   }
 
