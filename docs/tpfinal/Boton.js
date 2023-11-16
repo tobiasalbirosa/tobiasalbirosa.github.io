@@ -16,53 +16,79 @@ class Boton {
   }
 
   actualizar() {
-    if (this.tiempo <= 150) {
+    
+    this.estado = "off"
+    
+    if (this.tiempo < 60) {
+
       this.tiempo++
+        this.estado = "off"
     }
-    if (this.tiempo >= 150) {
+
+    if (this.tiempo >= 60) {
       this.estado = "on"
     }
 
-    if (this.estado == "on" && mouseX > this.x && mouseX < this.x + this.tamX && mouseY > this.y && mouseY < this.y + this.tamY) {
-      this.colorFill = this.colores[1]
+        if (this.estado == "on" &&
+        mouseX > this.x &&
+        mouseX < this.x + this.tamX &&
+        mouseY > this.y &&
+        mouseY < this.y + this.tamY) {
 
-        if (mouseIsPressed == true && this.estado == "on") {
-        this.colorFill = this.colores[2]
-          this.evento(this.texto)
+        this.colorFill = this.colores[1]
+
+          if (this.estado == "on") {
+
+          this.colorFill = this.colores[2]
+
+            if (mouseIsPressed && this.estado == "on") {
+
+              this.evento(this.texto)
+              this.estado = "off"
+          }
+        }
+      } else {
+
+        this.colorFill = this.colores[0]
       }
-    } else {
-      this.colorFill = this.colores[0]
+        this.estado = "off"
     }
-  }
-  evento(texto) {
-    //this.estado == texto
 
-    if (texto == "Créditos") {
-      app.pantalla=1
+  
+  evento(txt) {
+      if (txt == "Créditos") {
+           app.cambiarPantalla("creditos")
+
     }
-      if (texto == "Inicio") {
-      app.pantalla=2
+
+    if (txt == "Volver") {
+     app.cambiarPantalla("volver")
+    }
+
+    if (txt == "Iniciar") {
+      app.cambiarPantalla(2)
     }
     
-    if (texto == "Siguiente") {
-      app.pantalla=+1
-        this.tiempo = 0
-        this.estado == "off"
+    if (txt == "Inicio") {
+      app.cambiarPantalla("irainicio")
     }
-    if (texto == "Volver") {
-      app.pantalla=1
-        this.tiempo = 0
-        this.estado == "off"
+
+    if (txt == "Siguiente") {
+      app.cambiarPantalla("Siguiente")
     }
+    
+    this.estado = "off"
+
   }
   dibujar() {
-    this.actualizar()
+
+      this.actualizar()
       push()
       fill(this.colorFill)
       rect(this.x, this.y, this.tamX, this.tamY)
       fill(this.colorTextFill)
       text(this.texto, this.x + this.tamX/4, this.y + this.tamY/2)
-
       pop()
   }
+  
 }

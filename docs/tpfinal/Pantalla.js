@@ -9,7 +9,7 @@ class Pantalla {
       fetch("/prueba.json").then((response) => {
       response.json().then(data => {
         this.texto  = data.textos
-            this.texto[i] = this.texto[i].replaceAll("\\\\n", "\n"); 
+
       }
       )
     }
@@ -22,4 +22,5 @@ class Pantalla {
       text(this.texto[this.id], width/2, height/5)
       pop()
   }
+  
 }
