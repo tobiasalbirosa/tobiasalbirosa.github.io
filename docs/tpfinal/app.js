@@ -41,10 +41,9 @@ class App {
     } else if (this.pantalla == 2) {
 
       this.instanciaPantalla[this.pantalla].dibujar()
-      this.irainicio.dibujar()
-      this.siguiente.dibujar()
-    
-   } else if (this.pantalla == 3) {
+        this.irainicio.dibujar()
+        this.siguiente.dibujar()
+    } else if (this.pantalla == 3) {
 
       this.instanciaPantalla[this.pantalla].dibujar()
         this.volver.dibujar()
@@ -73,7 +72,7 @@ class App {
         this.pantalla--
       } else if (param == "Siguiente") {
         this.pantalla++
-      }else if (param == 2) {
+      } else if (param == 2) {
         this.pantalla = 2
       }
 

@@ -3,10 +3,10 @@ class Pantalla {
   constructor(id) {
 
     this.id = id
-      this.img = loadImage("/assets/"+this.id+".png")
+      this.img = loadImage("/tpfinal/assets/"+this.id+".png")
       this.texto = ""
 
-      fetch("/prueba.json").then((response) => {
+      fetch("/tpfinal/prueba.json").then((response) => {
       response.json().then(data => {
         this.texto  = data.textos
 
