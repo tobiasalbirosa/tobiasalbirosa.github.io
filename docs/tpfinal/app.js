@@ -31,7 +31,7 @@ class App {
   }
   dibujar() {
 
-
+    this.actualizar()
 
     if (this.pantalla == 0) {
 
