@@ -126,27 +126,24 @@ body{background:var(--bg);color:var(--text);font-family:'Roboto',sans-serif;min-
 .iframe-wrap{width:100%;height:360px;background:#05050f}
 .iframe-wrap iframe{width:100%;height:100%;border:none;display:block}
 
-/* OSS */
-.oss-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:560px){.oss-grid{grid-template-columns:1fr}}
-.oss-card{border:1px solid var(--border);border-radius:6px;padding:22px 24px;background:var(--surface);position:relative;overflow:hidden;transition:border-color .2s,background .2s}
-.oss-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
-.oss-card.node::before{background:var(--accent)}.oss-card.python::before{background:var(--accent4)}
-.oss-card:hover::before{transform:scaleX(1)}.oss-card:hover{border-color:var(--muted);background:var(--surface2)}
-.oss-lang{font-family:'Roboto Mono',monospace;font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px}
-.oss-card.node .oss-lang{color:var(--accent)}.oss-card.python .oss-lang{color:var(--accent4)}
-.oss-title{font-size:1.3rem;font-weight:900;color:var(--text)}
+/* OSS: mismo estilo que project-card (barra + iframe) */
+.oss-list{display:flex;flex-direction:column;gap:18px}
+.oss-card{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:0;background:var(--surface);transition:border-color .25s}
+.oss-card:hover{border-color:var(--accent)}
+.oss-card .card-bar-left .card-name.node{color:var(--accent)}
+.oss-card .card-bar-left .card-name.python{color:var(--accent4)}
 
-/* GAMES */
-.games-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-@media(max-width:650px){.games-grid{grid-template-columns:1fr}}
-.game-card{border:1px solid var(--border);border-radius:6px;overflow:hidden;background:var(--surface);transition:border-color .2s}
+/* GAMES: una card por fila, ancho de la pantalla, iframe grande para jugar */
+.games-section{margin-left:calc(-50vw + 50%);margin-right:calc(-50vw + 50%);width:100vw;max-width:100vw;padding:0 24px;box-sizing:border-box}
+.games-grid{display:flex;flex-direction:column;gap:24px;max-width:1200px;margin:0 auto}
+.game-card{border:1px solid var(--border);border-radius:6px;overflow:hidden;background:var(--surface);transition:border-color .2s;width:100%}
 .game-card:hover{border-color:var(--accent3)}
-.game-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--border)}
-.game-led{width:6px;height:6px;border-radius:50%;background:var(--accent3);box-shadow:0 0 5px var(--accent3)}
-.game-name{font-family:'Roboto Mono',monospace;font-size:.68rem;font-weight:700;color:var(--accent3);text-transform:uppercase;letter-spacing:.1em}
-.game-frame{width:100%;height:200px;background:#05050f}
-.game-frame iframe{width:100%;height:100%;border:none}
+.game-card .card-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);background:rgba(77,159,255,.03)}
+.game-card .card-bar-left{display:flex;align-items:center;gap:8px}
+.game-card .card-dot{width:7px;height:7px;border-radius:50%;background:var(--accent3);box-shadow:0 0 6px var(--accent3)}
+.game-card .card-name{font-family:'Roboto Mono',monospace;font-size:.75rem;font-weight:700;color:var(--accent3);letter-spacing:.04em}
+.game-frame{width:100%;min-height:70vh;height:520px;background:#05050f}
+.game-frame iframe{width:100%;height:100%;border:none;display:block}
 
 /* CERTS */
 .cert-group{margin-bottom:26px}
@@ -172,7 +169,7 @@ body{background:var(--bg);color:var(--text);font-family:'Roboto',sans-serif;min-
   <div class="hero">
     <div class="hero-glow"></div>
     <div class="name-row" id="nameRow"></div>
-    <div class="hero-sub">Full Stack Developer &nbsp;·&nbsp; Designer &nbsp;·&nbsp; AI Engineering</div>
+    <div class="hero-sub">Full Stack Developer &nbsp;·&nbsp; Designer &nbsp;·&nbsp; AI &amp; Software Engineering</div>
     <a href="https://linkedin.com/in/tobiasalbirosa" target="_blank" class="linkedin-pill">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       in/tobiasalbirosa
@@ -208,27 +205,59 @@ body{background:var(--bg);color:var(--text);font-family:'Roboto',sans-serif;min-
 
   <div class="section">
     <div class="section-label"><span class="tag">03</span> Open Source Projects</div>
-    <div class="oss-grid">
-      <div class="oss-card node"><div class="oss-lang">NodeJS</div><div class="oss-title">Registrator</div></div>
-      <div class="oss-card python"><div class="oss-lang">Python</div><div class="oss-title">Uroboros</div></div>
+    <div class="oss-list">
+      <div class="project-card oss-card">
+        <div class="card-bar">
+          <div class="card-bar-left"><div class="card-dot"></div><span class="card-name node">github.com/tobiasalbirosa/registrator</span></div>
+          <span class="card-type">NodeJS</span>
+        </div>
+        <div class="iframe-wrap"><iframe src="https://github.com/tobiasalbirosa/registrator" loading="lazy" title="Registrator README"></iframe></div>
+      </div>
+      <div class="project-card oss-card">
+        <div class="card-bar">
+          <div class="card-bar-left">
+            <div class="card-dot" style="background:var(--accent4);box-shadow:0 0 6px var(--accent4)"></div>
+            <span class="card-name python">github.com/tobiasalbirosa/uroboros</span>
+          </div>
+          <span class="card-type">Python</span>
+        </div>
+        <div class="iframe-wrap"><iframe src="https://github.com/tobiasalbirosa/uroboros" loading="lazy" title="Uroboros README"></iframe></div>
+      </div>
     </div>
   </div>
 
   <div class="section">
     <div class="section-label"><span class="tag">04</span> Videogames</div>
+    <div class="games-section">
     <div class="games-grid">
       <div class="game-card">
-        <div class="game-bar"><div class="game-led"></div><span class="game-name">Miner</span></div>
-        <div class="game-frame"><iframe src="https://albibi.online/miner" loading="lazy"></iframe></div>
+        <div class="card-bar">
+          <div class="card-bar-left"><div class="card-dot"></div><span class="card-name">albibi.online/miner</span></div>
+          <span class="card-type">Miner</span>
+        </div>
+        <div class="game-frame"><iframe src="https://albibi.online/miner" loading="lazy" title="Miner"></iframe></div>
       </div>
       <div class="game-card">
-        <div class="game-bar"><div class="game-led" style="background:var(--accent2);box-shadow:0 0 5px var(--accent2)"></div><span class="game-name" style="color:var(--accent2)">Roulette</span></div>
-        <div class="game-frame"><iframe src="https://albibi.online/roulette" loading="lazy"></iframe></div>
+        <div class="card-bar">
+          <div class="card-bar-left">
+            <div class="card-dot" style="background:var(--accent2);box-shadow:0 0 6px var(--accent2)"></div>
+            <span class="card-name" style="color:var(--accent2)">albibi.online/roulette</span>
+          </div>
+          <span class="card-type">Roulette</span>
+        </div>
+        <div class="game-frame"><iframe src="https://albibi.online/roulette" loading="lazy" title="Roulette"></iframe></div>
       </div>
       <div class="game-card">
-        <div class="game-bar"><div class="game-led" style="background:var(--accent4);box-shadow:0 0 5px var(--accent4)"></div><span class="game-name" style="color:var(--accent4)">Shooter</span></div>
-        <div class="game-frame"><iframe src="https://albibi.online/shooter" loading="lazy"></iframe></div>
+        <div class="card-bar">
+          <div class="card-bar-left">
+            <div class="card-dot" style="background:var(--accent4);box-shadow:0 0 6px var(--accent4)"></div>
+            <span class="card-name" style="color:var(--accent4)">albibi.online/shooter</span>
+          </div>
+          <span class="card-type">Shooter</span>
+        </div>
+        <div class="game-frame"><iframe src="https://albibi.online/shooter" loading="lazy" title="Shooter"></iframe></div>
       </div>
+    </div>
     </div>
   </div>
 
