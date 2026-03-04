@@ -59,6 +59,19 @@ body{background:var(--bg);color:var(--text);font-family:'Roboto',sans-serif;min-
   transition:none!important;
 }
 
+/* Ajuste extra para móviles: letras más chicas */
+@media (max-width: 600px) {
+  .char{
+    font-size:clamp(1.9rem, 9vw, 3.2rem);
+    width:0.6em;
+    flex:0 0 0.6em;
+  }
+  .char.space{
+    width:0.6em;
+    flex:0 0 0.6em;
+  }
+}
+
 /* shuffling = visible, rotating random chars */
 .char.shuffling{
   opacity:1;
